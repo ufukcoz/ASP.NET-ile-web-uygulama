@@ -1,18 +1,18 @@
 # ContactApp
 
-ASP.NET Core MVC mimarisi kullanılarak geliştirilmiş, temel CRUD (Oluşturma, Okuma, Güncelleme, Silme) işlemlerini barındıran kişi yönetimi (rehber) uygulamasıdır. Proje, veritabanı kurulumu gerektirmeden doğrudan çalışabilmesi için `In-Memory Repository` deseni kullanılarak yapılandırılmıştır.
+ASP.NET Core MVC mimarisi kullanılarak geliştirilmiş, Entity Framework Core ve SQLite veritabanı altyapısıyla çalışan kişi yönetimi (rehber) uygulamasıdır.
 
 **Temel Özellikler**
 * **CRUD Operasyonları:** Yeni kayıt ekleme, listeleme, detay görüntüleme, güncelleme ve silme.
 * **Arama ve Filtreleme:** İsim ve soyisime göre anlık arama (Search) işlevi.
-* **Validasyon Mekanizması:** Eksik veya hatalı veri girişini engelleyen Client-Side (jQuery) ve Server-Side doğrulama kontrolleri.
-* **Bağımlılık Enjeksiyonu (DI):** `IContactRepository` arayüzü üzerinden In-Memory servisi entegrasyonu.
+* **Kalıcı Veri Saklama:** Entity Framework Core Code-First yaklaşımı ile SQLite veritabanı entegrasyonu.
+* **Otomatik Veritabanı Kurulumu:** Uygulama ilk çalıştığında Migration'ları otomatik uygular ve test verilerini (Seed Data) yükler.
 * **Arayüz:** Bootstrap kullanılarak tasarlanmış esnek (responsive) formlar ve veri tabloları.
 
 **Kullanılan Teknolojiler**
-* C# & .NET Core
-* ASP.NET Core MVC
-* LINQ (Veri manipülasyonu ve sıralama için)
+* C# & .NET Core (ASP.NET Core MVC)
+* Entity Framework Core & SQLite
+* LINQ (Veri manipülasyonu için)
 * HTML, CSS, Bootstrap
 
 **Veri Modeli (Contact)**
@@ -27,14 +27,14 @@ Uygulama içerisindeki her bir kayıt aşağıdaki özellikleri barındırır:
 * `Notes`: Kişiye Özel Notlar
 
 **Yerel Kurulum (Local Setup)**
-Projeyi bilgisayarınızda derleyip çalıştırmak için terminal üzerinden şu komutları sırasıyla uygulayabilirsiniz:
+Projeyi bilgisayarınızda çalıştırdığınızda `App_Data` klasörü ve `contacts.db` dosyası otomatik olarak oluşturulacaktır:
 
 ```bash
-# Repoyu bilgisayarınıza klonlayın
-git clone [https://github.com/ufukcoz/ContactApp.git](https://github.com/ufukcoz/ContactApp.git)
-
 # Proje ana dizinine girin
 cd ContactApp
 
 # Projeyi derleyip çalıştırın
 dotnet run
+
+
+
