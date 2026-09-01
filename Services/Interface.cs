@@ -4,7 +4,7 @@ namespace ContactApp.Services
 {
     public interface IContactRepository
     {
-        IEnumerable<Contact> GetAllContacts();
+        IEnumerable<Contact> GetAll();
         Contact? GetById(int id);
         Contact Add(Contact contact);
         bool Update(Contact contact);

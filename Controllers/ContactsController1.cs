@@ -21,7 +21,7 @@ namespace ContactApp.Controllers
         [HttpGet("")]
         public IActionResult Index(string? q)
         {
-            var items = _repo.GetAllContacts();
+            var items = _repo.GetAll();
 
             if (!string.IsNullOrEmpty(q))
             {
