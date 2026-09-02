@@ -1,30 +1,31 @@
 # TodoApp
 
-ASP.NET Core Razor Pages mimarisi kullanılarak geliştirilmiş, temel görev yönetim işlemlerini barındıran yapılacaklar listesi (to-do) uygulamasıdır. Proje, veritabanı kurulumu gerektirmeden doğrudan çalışabilmesi için In-Memory Repository deseni kullanılarak yapılandırılmıştır.
+ASP.NET Core Razor Pages mimarisi kullanılarak geliştirilmiş, temel görev yönetim işlemlerini barındıran bir yapılacaklar listesi (to-do) uygulamasıdır. Proje, Dependency Injection (DI) altyapısı sayesinde **In-Memory Repository** ve **Entity Framework Core (SQL Server)** arasında duruma göre dinamik veritabanı seçimi yapabilecek esnek bir mimariyle yapılandırılmıştır.
 
 ## Temel Özellikler
-* **CRUD Operasyonları:** Yeni görev oluşturma, listeleme ve gereksiz görevleri silme.
+* **Dinamik Veri Yönetimi:** `ITodoStore` arayüzü üzerinden In-Memory veya EF Core (SQL Server) servisleri arasında kolayca geçiş yapabilme entegrasyonu.
+* **CRUD Operasyonları:** Yeni görev oluşturma, mevcut görevleri listeleme ve gereksizleri silme.
 * **Öncelik Belirleme:** Görevlere özel öncelik seviyeleri (Düşük, Orta, Yüksek) atama.
 * **Durum ve Tarih Takibi:** Bitiş tarihi (Due Date) belirleme ve tamamlanan görevleri işaretleme.
-* **Bağımlılık Enjeksiyonu (DI):** `ITodoStore` arayüzü üzerinden In-Memory servisi entegrasyonu.
-* **Arayüz:** Bootstrap kullanılarak tasarlanmış esnek (responsive) formlar ve düzenli liste yapıları.
+* **Esnek Arayüz:** Bootstrap kullanılarak tasarlanmış, her cihaza uyumlu (responsive) formlar ve düzenli liste yapıları.
 
 ## Kullanılan Teknolojiler
 * C# & .NET Core
 * ASP.NET Core Razor Pages
+* Entity Framework Core & SQL Server
 * LINQ (Veri manipülasyonu ve filtreleme için)
 * HTML, CSS, Bootstrap
 
 ## Veri Modeli (Todo)
-Uygulama içerisindeki her bir kayıt aşağıdaki özellikleri barındırır:
 * **Id:** Benzersiz Kimlik
 * **Title:** Görev Başlığı
-* **Description:** Görev Açıklaması detayları
+* **Description:** Görev detayları ve açıklaması
 * **Priority:** Görev Önceliği
 * **DueDate:** Hedeflenen Bitiş Tarihi
 * **IsDone:** Tamamlanma Durumu (Evet/Hayır)
 
 ## Yerel Kurulum (Local Setup)
+
 Projeyi bilgisayarınızda derleyip çalıştırmak için terminal üzerinden şu komutları sırasıyla uygulayabilirsiniz:
 
 ```bash
