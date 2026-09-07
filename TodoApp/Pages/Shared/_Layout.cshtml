@@ -1,5 +1,4 @@
-﻿﻿
-<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="utf-8" />
@@ -16,7 +15,7 @@
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">TodoApp</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -28,7 +27,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Todoss/Index">Görevler</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Todos/Index">Görevler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/News/Index">Haberler</a>
                         </li>
                     </ul>
                 </div>
@@ -37,7 +39,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            @if (TempData["Message"] is string msg && !string.IsNullOrEmpty(msg))
+            @if(TempData["Message"] is string msg && !string.IsNullOrEmpty(msg))
             {
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     @msg

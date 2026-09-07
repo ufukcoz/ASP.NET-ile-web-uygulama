@@ -3,6 +3,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using TodoApp.Repositories;
 using TodoApp.Services;
+using TodoApp.Services.NewsApi;
 using TodoApp.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +15,6 @@ builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddFluentValidationClientsideAdapters();
 builder.Services.AddValidatorsFromAssemblyContaining<TodoValidator>();
 
-
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? "Server=(localdb)\\MSSQLLocalDB; Database=TodoAppDb; Trusted_Connection=True; TrustServerCertificate=True";
 
@@ -22,7 +22,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<TodoDbContext>(options =>
     options.UseSqlServer(connectionString)
 );
-//DI
+
 if (builder.Environment.IsDevelopment())
 {
     // DI - Register
@@ -36,6 +36,15 @@ else
         .Services
         .AddScoped<ITodoStore, EfTodoStore>();
 }
+
+builder.Services.AddHttpClient<INewsClient, NewsClient>(client =>
+{
+    var baseUrl = builder.Configuration["NewsApi:BaseUrl"]
+        ?? "https//localhost:7235/";
+    client.BaseAddress = new Uri(baseUrl);
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -45,6 +54,7 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
 if (app.Environment.IsProduction())
 {
     using var scope = app.Services.CreateScope();
@@ -69,6 +79,7 @@ if (app.Environment.IsProduction())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 app.UseRouting();
 
 app.UseAuthorization();
@@ -76,5 +87,7 @@ app.UseAuthorization();
 //app.MapStaticAssets();
 //app.MapRazorPages()
 //   .WithStaticAssets();
+
 app.MapRazorPages();
+
 app.Run();
