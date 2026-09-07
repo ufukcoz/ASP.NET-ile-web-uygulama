@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../../News/News.csproj" />
+  <Project Path="../../TodoApp/TodoApp.csproj" />
+  <Project Path="ContactApp/ContactApp.csproj" />
+</Solution>
