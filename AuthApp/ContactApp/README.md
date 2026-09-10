@@ -1,40 +1,55 @@
-# ContactApp
+# ContactApp - ASP.NET Core MVC Authentication & Contact Management
 
-ASP.NET Core MVC mimarisi kullanılarak geliştirilmiş, Entity Framework Core ve SQLite veritabanı altyapısıyla çalışan kişi yönetimi (rehber) uygulamasıdır.
+Bu proje, ASP.NET Core MVC kullanılarak geliştirilmiş; kullanıcı kimlik doğrulama (Authentication), yetkilendirme (Authorization) ve kapsamlı iletişim/rehber yönetimi özelliklerini içeren bir web uygulamasıdır.
 
-**Temel Özellikler**
-* **CRUD Operasyonları:** Yeni kayıt ekleme, listeleme, detay görüntüleme, güncelleme ve silme.
-* **Arama ve Filtreleme:** İsim ve soyisime göre anlık arama (Search) işlevi.
-* **Kalıcı Veri Saklama:** Entity Framework Core Code-First yaklaşımı ile SQLite veritabanı entegrasyonu.
-* **Otomatik Veritabanı Kurulumu:** Uygulama ilk çalıştığında Migration'ları otomatik uygular ve test verilerini (Seed Data) yükler.
-* **Arayüz:** Bootstrap kullanılarak tasarlanmış esnek (responsive) formlar ve veri tabloları.
+## 🚀 Özellikler
 
-**Kullanılan Teknolojiler**
-* C# & .NET Core (ASP.NET Core MVC)
-* Entity Framework Core & SQLite
-* LINQ (Veri manipülasyonu için)
-* HTML, CSS, Bootstrap
+* **Kullanıcı İşlemleri:** Güvenli kayıt olma (Register), giriş yapma (Login) ve çıkış yapma (Logout) mekanizmaları (`ASP.NET Core Identity`).
+* **Veritabanı Yönetimi:** Entity Framework Core ve Code-First yaklaşımı ile otomatik migration ve veri tabanı yönetimi.
+* **Rol ve Yetkilendirme:** Kullanıcı rolleri ve güvenli sayfa yönlendirmeleri.
+* **Veritabanı Tohumlama (DbSeeder):** Uygulama ilk ayağa kalktığında otomatik olarak gerekli başlangıç verilerinin ve rollerin eklenmesi.
+* **Modern Arayüz:** Bootstrap destekli modern, duyarlı (responsive) ve kullanıcı dostu form tasarımları.
 
-**Veri Modeli (Contact)**
-Uygulama içerisindeki her bir kayıt aşağıdaki özellikleri barındırır:
-* `Id`: Benzersiz Kimlik
-* `FirstName`: Ad
-* `LastName`: Soyad
-* `Email`: E-posta Adresi
-* `Phone`: Telefon Numarası
-* `Company`: Çalıştığı Şirket
-* `Title`: Unvan/Pozisyon
-* `Notes`: Kişiye Özel Notlar
+## 🛠️ Kullanılan Teknolojiler
 
-**Yerel Kurulum (Local Setup)**
-Projeyi bilgisayarınızda çalıştırdığınızda `App_Data` klasörü ve `contacts.db` dosyası otomatik olarak oluşturulacaktır:
+* **Framework:** .NET Core (ASP.NET Core MVC)
+* **Kütüphane/ORM:** Entity Framework Core
+* **Kimlik Doğrulama:** ASP.NET Core Identity
+* **Veritabanı:** MySQL / PostgreSQL
+* **Önyüz (Frontend):** HTML5, CSS3, Bootstrap
 
-```bash
-# Proje ana dizinine girin
-cd ContactApp
+## 📂 Proje Mimarisi
 
-# Projeyi derleyip çalıştırın
+```text
+ContactApp/
+│
+├── Controllers/         # MVC Controller sınıfları (Account, Home, vb.)
+├── Models/              # Veritabanı modelleri ve ViewModel sınıfları
+├── Data/                # DbContext ve Veritabanı Seed sınıfları
+├── Views/               # Razor görünüm dosyaları (.cshtml)
+├── Program.cs           # Servis yapılandırmaları ve uygulama pipeline ayarları
+└── appsettings.json     # Veritabanı ve uygulama ayarları
+
+⚙️ Kurulum ve Çalıştırma
+Projeyi kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
+
+Repoyu Klonlayın:
+
+Bash
+git clone [https://github.com/ufukcoz/ASP.NET-ile-web-uygulama.git](https://github.com/ufukcoz/ASP.NET-ile-web-uygulama.git)
+Proje Klasörüne Gidin:
+
+Bash
+cd ASP.NET-ile-web-uygulama/AuthApp/ContactApp
+Veritabanı Bağlantısını Ayarlayın:
+appsettings.json dosyasını açarak kendi yerel veritabanı bağlantı cümlenizi (ConnectionStrings) güncelleyin.
+
+Migration ve Güncellemeleri Uygulayın:
+Terminal üzerinden veritabanını oluşturmak için şu komutu çalıştırın:
+
+Bash
+dotnet ef database update
+Projeyi Çalıştırın:
+
+Bash
 dotnet run
-
-
-
