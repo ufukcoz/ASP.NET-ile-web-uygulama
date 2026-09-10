@@ -5,8 +5,7 @@
 
 # dotenv files
 .env
-*.db-shm
-*.db-wal
+
 # User-specific files
 *.rsuser
 *.suo
@@ -481,7 +480,3 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
-/AuthApp/AuthApp/AuthApp.slnx
-/AuthApp/ContactApp/App_Data/contacts.db
-/AuthApp/ContactApp/App_Data/contacts.db-shm
-/AuthApp/ContactApp/App_Data/contacts.db-wal
